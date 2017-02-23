@@ -6,6 +6,9 @@ services:
         image: sauloricci/docker-spark
         command: bin/spark-class org.apache.spark.deploy.master.Master -h master
         hostname: master
+        deploy:
+            placement:
+                constraints: [node.labels.type == master]
         environment:
             MASTER: spark://master:7077
             SPARK_PUBLIC_DNS: $EXTERNAL_IP
@@ -30,6 +33,8 @@ services:
         hostname: worker
         deploy:
             mode: global
+            placement:
+                constraints: [node.labels.type == worker]
         environment:
             SPARK_WORKER_PORT: 8881
             SPARK_WORKER_WEBUI_PORT: 8081
