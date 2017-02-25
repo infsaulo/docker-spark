@@ -7,6 +7,7 @@ services:
         command: bin/spark-class org.apache.spark.deploy.master.Master -h master
         hostname: master
         deploy:
+            mode: global
             placement:
                 constraints: [node.labels.type == master]
         environment:
@@ -26,6 +27,8 @@ services:
             - 6066:6066
             - 7077:7077
             - 8080:8080
+        volumes:
+            - /mnt/spark_data:/data
 
     worker:
         image: sauloricci/docker-spark
