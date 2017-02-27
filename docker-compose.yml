@@ -3,7 +3,7 @@ version: "3"
 services:
 
     master:
-        image: sauloricci/docker-spark
+        image: sauloricci/docker-spark-master
         command: bin/spark-class org.apache.spark.deploy.master.Master -h master
         hostname: master
         deploy:
@@ -29,9 +29,13 @@ services:
             - 8080:8080
         volumes:
             - /mnt/spark_data:/data
+            - /data1:/data1
+            - /data2:/data2
+            - /data3:/data3
+            - /data4:/data4
 
     worker:
-        image: sauloricci/docker-spark
+        image: sauloricci/docker-spark-worker
         command: bin/spark-class org.apache.spark.deploy.worker.Worker spark://master:7077
         hostname: worker
         deploy:
@@ -54,3 +58,8 @@ services:
         ports:
             - 8081:8081
             - 8881:8881
+        volumes:
+            - /data1:/data1
+            - /data2:/data2
+            - /data3:/data3
+            - /data4:/data4

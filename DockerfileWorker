@@ -29,4 +29,5 @@ RUN curl -sL --retry 3 \
  && chown -R root:root $SPARK_HOME
 
 WORKDIR $SPARK_HOME
+ADD conf/worker/spark-defaults.conf conf/spark-defaults.conf
 CMD ["bin/spark-class", "org.apache.spark.deploy.master.Master"]
