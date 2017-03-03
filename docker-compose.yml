@@ -63,3 +63,21 @@ services:
             - /data2:/data2
             - /data3:/data3
             - /data4:/data4
+
+    notebook:
+        image: sauloricci/notebook
+        command: start-notebook.sh --NotebookApp.token=''
+        hostname: notebook
+        deploy:
+            placement:
+                constraints: [node.labels.type == master]
+        environment:
+            TINI_SUBREAPER: true
+        links:
+            - master
+            - worker
+        ports:
+            - 8888:8888
+        pid: "host"
+        volumes:
+            - /notebook:/home/jovyan/work
