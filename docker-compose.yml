@@ -72,10 +72,11 @@ services:
             placement:
                 constraints: [node.labels.type == master]
         environment:
-            TINI_SUBREAPER: true
+            TINI_SUBREAPER: "true"
+            GRANT_SUDO: "yes"
+            SPARK_PUBLIC_DNS: $EXTERNAL_IP
         links:
             - master
-            - worker
         ports:
             - 8888:8888
         pid: "host"
