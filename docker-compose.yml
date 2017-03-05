@@ -85,5 +85,6 @@ services:
                constraints: [node.labels.type == master]
        links:
            - master
+           - notebook
        ports:
            - 666:666 
