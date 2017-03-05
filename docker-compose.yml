@@ -22,11 +22,6 @@ services:
             - 7006
             - 7077
             - 6066
-        ports:
-            - 4040:4040
-            - 6066:6066
-            - 7077:7077
-            - 8080:8080
         volumes:
             - /mnt/spark_data:/data
             - /data1:/data1
@@ -55,9 +50,6 @@ services:
             - 7015
             - 7016
             - 8881
-        ports:
-            - 8081:8081
-            - 8881:8881
         volumes:
             - /data1:/data1
             - /data2:/data2
@@ -77,8 +69,17 @@ services:
             SPARK_PUBLIC_DNS: $EXTERNAL_IP
         links:
             - master
-        ports:
-            - 8888:8888
         pid: "host"
         volumes:
             - /notebook:/home/jovyan/work
+    
+    proxy:
+       image: sauloricci/docker_spark_proxy
+       hostname: proxy
+       deploy:
+           placement:
+               constraints: [node.labels.type == master]
+       links:
+           - master
+       ports:
+           - 666:666 
