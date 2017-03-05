@@ -60,7 +60,7 @@ services:
 
     notebook:
         image: sauloricci/notebook
-        command: start-notebook.sh --NotebookApp.token=''
+        command: start-notebook.sh --NotebookApp.token='' --NotebookApp.ip='notebook' --NotebookApp.allow_origin='*'
         hostname: notebook
         deploy:
             placement:
@@ -87,4 +87,5 @@ services:
            - master
            - notebook
        ports:
-           - 666:666 
+           - 666:666
+           - 667:667
