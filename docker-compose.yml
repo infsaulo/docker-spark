@@ -22,6 +22,8 @@ services:
             - 7006
             - 7077
             - 6066
+            - 8080
+            - 4040
         volumes:
             - /mnt/spark_data:/data
             - /data1:/data1
@@ -69,6 +71,8 @@ services:
             SPARK_PUBLIC_DNS: $EXTERNAL_IP
         links:
             - master
+        expose:
+            - 8888
         pid: "host"
         volumes:
             - /notebook:/home/jovyan/work
