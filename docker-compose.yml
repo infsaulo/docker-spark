@@ -69,6 +69,7 @@ services:
             TINI_SUBREAPER: "true"
             GRANT_SUDO: "yes"
             SPARK_PUBLIC_DNS: $EXTERNAL_IP
+            SPARK_OPTS: "--master=spark://master:7077"
         links:
             - master
         expose:
