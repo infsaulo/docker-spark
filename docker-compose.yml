@@ -59,7 +59,7 @@ services:
             - /data4:/data4
 
     notebook:
-        image: sauloricci/notebook
+        image: sauloricci/all-spark-notebook
         command: start-notebook.sh --NotebookApp.token='' --NotebookApp.ip='notebook' --NotebookApp.allow_origin='*'
         hostname: notebook
         deploy:
