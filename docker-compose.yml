@@ -9,7 +9,9 @@ services:
         deploy:
             mode: global
             placement:
-                constraints: [node.labels.type == master]
+                constraints:
+                    - node.labels.type == master
+                    - node.labels.spark == true
         environment:
             MASTER: spark://master:7077
             SPARK_PUBLIC_DNS: $EXTERNAL_IP
@@ -38,7 +40,9 @@ services:
         deploy:
             mode: global
             placement:
-                constraints: [node.labels.type == worker]
+                constraints: 
+                    - node.labels.type == worker
+                    - node.labels.spark == true
         environment:
             SPARK_WORKER_PORT: 8881
             SPARK_WORKER_WEBUI_PORT: 8081
@@ -64,7 +68,10 @@ services:
         hostname: notebook
         deploy:
             placement:
-                constraints: [node.labels.type == master]
+                constraints: 
+                    - node.labels.type == master
+                    - node.labels.spark == true
+
         environment:
             TINI_SUBREAPER: "true"
             GRANT_SUDO: "yes"
@@ -83,7 +90,9 @@ services:
        hostname: proxy
        deploy:
            placement:
-               constraints: [node.labels.type == master]
+               constraints: 
+                - node.labels.type == master
+                - node.labels.spark == true
        links:
            - master
            - notebook
