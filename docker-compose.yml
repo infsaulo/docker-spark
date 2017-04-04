@@ -32,6 +32,13 @@ services:
             - /data2:/data2
             - /data3:/data3
             - /data4:/data4
+        extra_hosts:
+            - "kafka1:13.65.242.208"
+            - "zk1:13.65.242.208"
+            - "kafka2:13.84.50.174"
+            - "zk2:13.84.50.174"
+            - "kafka3:104.210.144.204"
+            - "zk3:104.210.144.204"
 
     worker:
         image: sauloricci/docker-spark-worker
@@ -61,6 +68,13 @@ services:
             - /data2:/data2
             - /data3:/data3
             - /data4:/data4
+        extra_hosts:
+            - "kafka1:13.65.242.208"
+            - "zk1:13.65.242.208"
+            - "kafka2:13.84.50.174"
+            - "zk2:13.84.50.174"
+            - "kafka3:104.210.144.204"
+            - "zk3:104.210.144.204"
 
     notebook:
         image: sauloricci/all-spark-notebook
