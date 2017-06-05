@@ -87,7 +87,6 @@ services:
                 - node.labels.spark == true
        links:
            - master
-           - notebook
        ports:
            - 666:666
            - 667:667
