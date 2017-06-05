@@ -40,6 +40,8 @@ services:
             - "zk2:13.84.50.174"
             - "kafka3:104.210.144.204"
             - "zk3:104.210.144.204"
+        ports:
+            - 5005:5005
 
     worker:
         image: sauloricci/docker-spark-worker
