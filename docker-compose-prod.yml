@@ -77,31 +77,8 @@ services:
             - "kafka3:104.210.144.204"
             - "zk3:104.210.144.204"
 
-    notebook:
-        image: sauloricci/all-spark-notebook
-        command: start-notebook.sh --NotebookApp.token='' --NotebookApp.ip='notebook' --NotebookApp.allow_origin='*'
-        hostname: notebook
-        deploy:
-            placement:
-                constraints: 
-                    - node.labels.type == master
-                    - node.labels.spark == true
-
-        environment:
-            TINI_SUBREAPER: "true"
-            GRANT_SUDO: "yes"
-            SPARK_PUBLIC_DNS: $EXTERNAL_IP
-            SPARK_OPTS: "--master=spark://master:7077"
-        links:
-            - master
-        expose:
-            - 8888
-        pid: "host"
-        volumes:
-            - /notebook:/home/jovyan/work
-    
     proxy:
-       image: sauloricci/docker_spark_proxy
+       image: sauloricci/docker_spark_proxy:prod
        hostname: proxy
        deploy:
            placement:

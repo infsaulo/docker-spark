@@ -1,0 +1,7 @@
+FROM nginx:alpine
+
+COPY conf/proxy/spark_prod_proxy.conf /etc/nginx/nginx.conf
+
+RUN mkdir /proxy && mkdir /proxy/users
+
+COPY conf/proxy/credentials /proxy/users/credentials
