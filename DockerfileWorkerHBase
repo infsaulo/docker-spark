@@ -45,4 +45,5 @@ RUN chmod 644 jars/azure-storage-3.1.0.jar
 ADD http://central.maven.org/maven2/org/apache/hadoop/hadoop-azure/2.7.2/hadoop-azure-2.7.2.jar jars/hadoop-azure-2.7.2.jar
 RUN chmod 644 jars/hadoop-azure-2.7.2.jar
 ADD conf/worker/spark-defaults.conf conf/spark-defaults.conf
+ADD conf/hbase/hbase-site.xml conf/hbase-site.xml
 CMD ["bin/spark-class", "org.apache.spark.deploy.master.Master"]

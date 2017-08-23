@@ -31,5 +31,9 @@ RUN curl -sL --retry 3 \
 WORKDIR $SPARK_HOME
 ADD https://jdbc.postgresql.org/download/postgresql-42.0.0.jar jars/postgresql-42.0.0.jar
 RUN chmod 644 jars/postgresql-42.0.0.jar
+ADD http://central.maven.org/maven2/com/microsoft/azure/azure-storage/3.1.0/azure-storage-3.1.0.jar jars/azure-storage-3.1.0.jar
+RUN chmod 644 jars/azure-storage-3.1.0.jar
+ADD http://central.maven.org/maven2/org/apache/hadoop/hadoop-azure/2.7.2/hadoop-azure-2.7.2.jar jars/hadoop-azure-2.7.2.jar
+RUN chmod 644 jars/hadoop-azure-2.7.2.jar
 ADD conf/master/spark-defaults.conf conf/spark-defaults.conf
 CMD ["bin/spark-class", "org.apache.spark.deploy.master.Master"]
