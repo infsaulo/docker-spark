@@ -23,7 +23,7 @@
 <configuration>
 <property>
 <name>hbase.zookeeper.quorum</name>
-<value>zk0-alethi.wzibcysfa2ve5ibfj0byvv1meg.dx.internal.cloudapp.net,zk2-alethi.wzibcysfa2ve5ibfj0byvv1meg.dx.internal.cloudapp.net,zk3-alethi.wzibcysfa2ve5ibfj0byvv1meg.dx.internal.cloudapp.net</value>
+<value>zk0-alethi.wzibcysfa2ve5ibfj0byvv1meg.dx.internal.cloudapp.net,zk1-alethi.wzibcysfa2ve5ibfj0byvv1meg.dx.internal.cloudapp.net,zk2-alethi.wzibcysfa2ve5ibfj0byvv1meg.dx.internal.cloudapp.net</value>
 </property>
 <property>
 <name>hbase.zookeeper.property.clientPort</name>
