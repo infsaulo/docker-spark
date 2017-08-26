@@ -33,7 +33,7 @@ services:
             - /data2:/data2
             - /data3:/data3
             - /data4:/data4
-            - /logs:/logs
+            - /spark_logs:/spark_logs
         extra_hosts:
             - "kafka1:13.65.242.208"
             - "zk1:13.65.242.208"
@@ -72,7 +72,7 @@ services:
             - /data2:/data2
             - /data3:/data3
             - /data4:/data4
-            - /logs:/logs
+            - /spark_logs:/spark_logs
         extra_hosts:
             - "kafka1:13.65.242.208"
             - "zk1:13.65.242.208"
