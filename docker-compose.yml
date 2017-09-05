@@ -27,6 +27,8 @@ services:
             - 8080
             - 4040
             - 5005
+        ports:
+            - 5005:5005
         volumes:
             - /mnt/spark_data:/data
             - /data1:/data1
