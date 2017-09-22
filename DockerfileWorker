@@ -1,12 +1,14 @@
 FROM frolvlad/alpine-oraclejdk8:slim
 MAINTAINER Saulo Ricci "infsaulok@gmail.com"
 
-RUN apk add --no-cache curl bash python python-dev py-setuptools
+RUN apk add --no-cache curl bash python3 python3-dev && python3 -m ensurepip && rm -r /usr/lib/python*/ensurepip && pip3 install --upgrade pip setuptools && \
+if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip; fi && \
+rm -r /root/.cache
 
 RUN echo \
-&& if [[ ! -e /usr/bin/python ]];        then ln -sf /usr/bin/python2.7 /usr/bin/python; fi \
-&& if [[ ! -e /usr/bin/python-config ]]; then ln -sf /usr/bin/python2.7-config /usr/bin/python-config; fi \
-&& if [[ ! -e /usr/bin/easy_install ]];  then ln -sf /usr/bin/easy_install-2.7 /usr/bin/easy_install; fi \
+&& if [[ ! -e /usr/bin/python ]];        then ln -sf /usr/bin/python3 /usr/bin/python; fi \
+&& if [[ ! -e /usr/bin/python-config ]]; then ln -sf /usr/bin/python3-config /usr/bin/python-config; fi \
+&& if [[ ! -e /usr/bin/easy_install ]];  then ln -sf /usr/bin/easy_install-3 /usr/bin/easy_install; fi \
 && easy_install pip \
 && pip install --upgrade pip \
 && if [[ ! -e /usr/bin/pip ]]; then ln -sf /usr/bin/pip2.7 /usr/bin/pip; fi \
