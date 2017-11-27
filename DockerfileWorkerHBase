@@ -44,6 +44,8 @@ ADD http://central.maven.org/maven2/com/microsoft/azure/azure-storage/3.1.0/azur
 RUN chmod 644 jars/azure-storage-3.1.0.jar
 ADD http://central.maven.org/maven2/org/apache/hadoop/hadoop-azure/2.7.2/hadoop-azure-2.7.2.jar jars/hadoop-azure-2.7.2.jar
 RUN chmod 644 jars/hadoop-azure-2.7.2.jar
+ADD http://dl.bintray.com/spark-packages/maven/graphframes/graphframes/0.5.0-spark2.1-s_2.10/graphframes-0.5.0-spark2.1-s_2.10.jar jars/graphframes-0.5.0-spark2.1-s_2.10.jar
+RUN chmod 644 jars/graphframes-0.5.0-spark2.1-s_2.10.jar
 ADD conf/worker/spark-defaults.conf conf/spark-defaults.conf
 ADD conf/worker/log4j.properties conf/log4j.properties
 ADD conf/hbase/hbase-site.xml conf/hbase-site.xml
