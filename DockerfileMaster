@@ -37,5 +37,9 @@ ADD http://central.maven.org/maven2/org/apache/hadoop/hadoop-azure/2.7.2/hadoop-
 RUN chmod 644 jars/hadoop-azure-2.7.2.jar
 ADD http://dl.bintray.com/spark-packages/maven/graphframes/graphframes/0.5.0-spark2.1-s_2.11/graphframes-0.5.0-spark2.1-s_2.11.jar jars/graphframes-0.5.0-spark2.1-s_2.11.jar
 RUN chmod 644 jars/graphframes-0.5.0-spark2.1-s_2.11.jar
+ADD http://central.maven.org/maven2/com/typesafe/scala-logging/scala-logging-slf4j_2.11/2.1.2/scala-logging-slf4j_2.11-2.1.2.jar jars/scala-logging-slf4j_2.11-2.1.2.jar
+RUN chmod 644 jars/scala-logging-slf4j_2.11-2.1.2.jar
+ADD http://central.maven.org/maven2/com/typesafe/scala-logging/scala-logging-api_2.11/2.1.2/scala-logging-api_2.11-2.1.2.jar jars/scala-logging-api_2.11-2.1.2.jar
+RUN chmod 644 jars/scala-logging-api_2.11-2.1.2.jar
 ADD conf/master/spark-defaults.conf conf/spark-defaults.conf
 CMD ["bin/spark-class", "org.apache.spark.deploy.master.Master"]
