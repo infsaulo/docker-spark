@@ -41,8 +41,8 @@ ADD http://central.maven.org/maven2/com/typesafe/scala-logging/scala-logging-slf
 RUN chmod 644 jars/scala-logging-slf4j_2.11-2.1.2.jar
 ADD http://central.maven.org/maven2/com/typesafe/scala-logging/scala-logging-api_2.11/2.1.2/scala-logging-api_2.11-2.1.2.jar jars/scala-logging-api_2.11-2.1.2.jar
 RUN chmod 644 jars/scala-logging-api_2.11-2.1.2.jar
-ADD http://central.maven.org/maven2/net/sansa-stack/sansa-rdf-spark-bundle_2.11/0.2.0/sansa-rdf-spark-bundle_2.11-0.2.0.jar jars/sansa-rdf-spark-bundle_2.11-0.2.0.jar
-RUN chmod 644 jars/sansa-rdf-spark-bundle_2.11-0.2.0.jar
+ADD http://central.maven.org/maven2/net/sansa-stack/sansa-rdf-spark-core_2.11/0.2.0/sansa-rdf-spark-core_2.11-0.2.0.jar jars/sansa-rdf-spark-core_2.11-0.2.0.jar
+RUN chmod 644 jars/sansa-rdf-spark-core_2.11-0.2.0.jar
 ADD conf/master/spark-defaults.conf conf/spark-defaults.conf
 ADD conf/master/log4j.properties conf/log4j.properties
 ADD conf/hbase/hbase-site.xml conf/hbase-site.xml
