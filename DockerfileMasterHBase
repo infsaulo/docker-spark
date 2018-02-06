@@ -19,7 +19,7 @@ RUN curl -sL --retry 3 \
 ENV SPARK_VERSION 2.1.1
 ENV SPARK_PACKAGE spark-${SPARK_VERSION}-bin-without-hadoop
 ENV SPARK_HOME /usr/spark-${SPARK_VERSION}
-ENV SPARK_DIST_CLASSPATH="$HADOOP_HOME/etc/hadoop/*:$HADOOP_HOME/share/hadoop/common/lib/*:$HADOOP_HOME/share/hadoop/common/*:$HADOOP_HOME/share/hadoop/hdfs/*:$HADOOP_HOME/share/hadoop/hdfs/lib/*:$HADOOP_HOME/share/hadoop/hdfs/*:$HADOOP_HOME/share/hadoop/yarn/lib/*:$HADOOP_HOME/share/hadoop/yarn/*:$HADOOP_HOME/share/hadoop/mapreduce/lib/*:$HADOOP_HOME/share/hadoop/mapreduce/*:$HADOOP_HOME/share/hadoop/tools/lib/*:$SPARK_HOME/jars/postgresql-42.0.0.jar"
+ENV SPARK_DIST_CLASSPATH="$HADOOP_HOME/etc/hadoop/*:$HADOOP_HOME/share/hadoop/common/lib/*:$HADOOP_HOME/share/hadoop/common/*:$HADOOP_HOME/share/hadoop/hdfs/*:$HADOOP_HOME/share/hadoop/hdfs/lib/*:$HADOOP_HOME/share/hadoop/hdfs/*:$HADOOP_HOME/share/hadoop/yarn/lib/*:$HADOOP_HOME/share/hadoop/yarn/*:$HADOOP_HOME/share/hadoop/mapreduce/lib/*:$HADOOP_HOME/share/hadoop/mapreduce/*:$HADOOP_HOME/share/hadoop/tools/lib/*:$SPARK_HOME/jars/*"
 ENV PATH $PATH:${SPARK_HOME}/bin
 RUN curl -sL --retry 3 \
   "http://d3kbcqa49mib13.cloudfront.net/${SPARK_PACKAGE}.tgz" \
@@ -43,6 +43,18 @@ ADD http://central.maven.org/maven2/com/typesafe/scala-logging/scala-logging-api
 RUN chmod 644 jars/scala-logging-api_2.11-2.1.2.jar
 ADD http://central.maven.org/maven2/net/sansa-stack/sansa-rdf-spark-core_2.11/0.2.0/sansa-rdf-spark-core_2.11-0.2.0.jar jars/sansa-rdf-spark-core_2.11-0.2.0.jar
 RUN chmod 644 jars/sansa-rdf-spark-core_2.11-0.2.0.jar
+ADD http://central.maven.org/maven2/net/sansa-stack/sansa-rdf-kryo-jena_2.11/0.2.0/sansa-rdf-kryo-jena_2.11-0.2.0.jar jars/sansa-rdf-kryo-jena_2.11-0.2.0.jar
+RUN chmod 644 jars/sansa-rdf-kryo-jena_2.11-0.2.0.jar
+ADD http://central.maven.org/maven2/net/sansa-stack/sansa-rdf-spark-utils_2.11/0.2.0/sansa-rdf-spark-utils_2.11-0.2.0.jar jars/sansa-rdf-spark-utils_2.11-0.2.0.jar
+RUN chmod 644 jars/sansa-rdf-spark-utils_2.11-0.2.0.jar
+ADD http://central.maven.org/maven2/net/sansa-stack/sansa-rdf-partition-core_2.11/0.2.0/sansa-rdf-partition-core_2.11-0.2.0.jar jars/sansa-rdf-partition-core_2.11-0.2.0.jar
+RUN chmod 644 jars/sansa-rdf-partition-core_2.11-0.2.0.jar
+ADD http://central.maven.org/maven2/org/apache/jena/jena-core/3.5.0/jena-core-3.5.0.jar jars/jena-core-3.5.0.jar
+RUN chmod 644 jars/jena-core-3.5.0.jar
+ADD http://central.maven.org/maven2/org/apache/jena/jena-arq/3.5.0/jena-arq-3.5.0.jar jars/jena-arq-3.5.0.jar
+RUN chmod 644 jars/jena-arq-3.5.0.jar
+ADD http://central.maven.org/maven2/org/apache/jena/jena-base/3.5.0/jena-base-3.5.0.jar jars/jena-base-3.5.0.jar
+RUN chmod 644 jars/jena-base-3.5.0.jar
 ADD conf/master/spark-defaults.conf conf/spark-defaults.conf
 ADD conf/master/log4j.properties conf/log4j.properties
 ADD conf/hbase/hbase-site.xml conf/hbase-site.xml
